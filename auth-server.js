@@ -27,7 +27,7 @@ authdb.sequelize.sync()
 
 
 // require the routes of the API
-require("./auth/routes/auth-user.routes")(app);
+require("./auth/routes/user.routes")(app);
 require("./auth/routes/authentication.routes")(app);
 
 const PORT = process.env.PORT || 4000;

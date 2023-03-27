@@ -18,7 +18,7 @@ const authdb = {};
 authdb.Sequelize = Sequelize;
 authdb.sequelize = sequelize;
 
-authdb.users = require("./auth-user.model.js")(sequelize, Sequelize);
+authdb.users = require("./user.model.js")(sequelize, Sequelize);
 
 module.exports = authdb;
 
