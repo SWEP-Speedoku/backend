@@ -1,5 +1,6 @@
 module.exports = app => {
     const users = require("../controllers/user.controller.js");
+    const authenticator = require("../../services/authentication.middleware.js");
   
     var router = require("express").Router();
   
@@ -7,7 +8,7 @@ module.exports = app => {
     router.post("/", users.create);
   
     // Retrieve all Users
-    router.get("/", users.findAll);
+    router.get("/", authenticator.authenticateJWT, users.findAll);
   
     // Retrieve a single User with id
     router.get("/:id", users.findOne);

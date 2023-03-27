@@ -1,4 +1,4 @@
-const authdbConfig = require("../config/auth-db.config.js");
+const authdbConfig = require("../../config/auth-db.config");
 const Sequelize = require("sequelize");
 
 const sequelize = new Sequelize(authdbConfig.DB, authdbConfig.USER, authdbConfig.PASSWORD, {

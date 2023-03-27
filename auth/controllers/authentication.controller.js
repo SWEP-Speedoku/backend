@@ -3,8 +3,7 @@ const User = authdb.users;
 const Op = authdb.Sequelize.Op;
 
 const jwt = require('jsonwebtoken');
-
-const accessTokenSecret = 'youraccesstokensecret';
+const authenticationConfig = require("../../config/authentication.config");
 
 exports.login = async (req, res) => {
     // Validate request
@@ -27,7 +26,7 @@ exports.login = async (req, res) => {
 
     if (user) {
         // Generate an access token
-        const accessToken = jwt.sign({ username: users.username,  role: users.role }, accessTokenSecret);
+        const accessToken = jwt.sign({ username: user.username,  role: user.role }, authenticationConfig.SECRET);
 
         res.json({
             accessToken

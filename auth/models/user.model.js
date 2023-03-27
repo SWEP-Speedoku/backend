@@ -7,8 +7,7 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING
       },
       role: {
-        type: Sequelize.STRING,
-        defaultValue: "Client"
+        type: Sequelize.STRING
       }
     });
   
