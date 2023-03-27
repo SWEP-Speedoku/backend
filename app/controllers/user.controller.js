@@ -1,4 +1,4 @@
-const db = require("../models");
+const db = require("../models/database");
 const User = db.users;
 const Op = db.Sequelize.Op;
 
@@ -38,6 +38,7 @@ exports.findAll = (req, res) => {
   
     User.findAll({ where: condition })
       .then(data => {
+        console.log("TestUser: " + data);
         res.send(data);
       })
       .catch(err => {
