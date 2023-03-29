@@ -4,7 +4,13 @@ module.exports = app => {
     var router = require("express").Router();
   
     // Login
-    router.post("/", authentications.login);
+    router.post("/login/", authentications.login);
+
+    // Refresh Token
+    router.post("/refresh/", authentications.refresh);
+
+    // Logout
+    router.post("/logout/", authentications.logout);
   
-    app.use('/api/login', router);
+    app.use('/auth', router);
   };
