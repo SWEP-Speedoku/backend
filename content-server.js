@@ -1,10 +1,11 @@
 const express = require("express");
 const cors = require("cors");
+const routingConfig = require("../../config/routing.config");
 
 const app = express();
 
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: routingConfig.CORS_ORIGIN
 };
 
 app.use(cors(corsOptions));
@@ -40,10 +41,14 @@ app.get("/", (req, res) => {
 });
 
 // require the routes of the API
-//require("./app/routes/user.routes")(app);
+require("./app/routes/game.routes")(app);
+require("./app/routes/gamelevel.routes")(app);
+require("./app/routes/gamesave.routes")(app);
+require("./app/routes/leaderboard.routes")(app);
+require("./app/routes/leaderboardEntry.routes")(app);
 
 // set port, listen for requests
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || routingConfig.APP_PORT;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });

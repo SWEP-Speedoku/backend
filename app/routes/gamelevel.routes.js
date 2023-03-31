@@ -1,6 +1,7 @@
 module.exports = app => {
     const gamelevels = require("../controllers/gamelevel.controller.js");
     const authenticator = require("../../services/authentication.middleware.js");
+    const routingConfig = require("../../config/routing.config");
   
     var router = require("express").Router();
   
@@ -22,5 +23,5 @@ module.exports = app => {
     // Delete all Entries (Admin Only)
     router.delete("/", authenticator.authenticateJWT, gamelevels.deleteAll);
   
-    app.use('/api/gamelevels', router);
+    app.use(`${routingConfig.APP_ENDPOINT}/gamelevels`, router);
   };

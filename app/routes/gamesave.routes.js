@@ -1,6 +1,7 @@
 module.exports = app => {
     const gamesaves = require("../controllers/gamesave.controller.js");
     const authenticator = require("../../services/authentication.middleware.js");
+    const routingConfig = require("../../config/routing.config");
   
     var router = require("express").Router();
   
@@ -25,5 +26,5 @@ module.exports = app => {
     // Delete all Saves (Admin Only)
     router.delete("/all", authenticator.authenticateJWT, gamesaves.deleteAll);
   
-    app.use('/api/gamesaves', router);
+    app.use(`${routingConfig.APP_ENDPOINT}/gamesaves`, router);
   };

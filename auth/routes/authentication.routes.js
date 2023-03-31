@@ -1,5 +1,6 @@
 module.exports = app => {
     const authentications = require("../controllers/authentication.controller.js");
+    const routingConfig = require("../../config/routing.config");
   
     var router = require("express").Router();
   
@@ -12,5 +13,5 @@ module.exports = app => {
     // Logout
     router.post("/logout/", authentications.logout);
   
-    app.use('/auth', router);
+    app.use(routingConfig.AUTH_ENDPOINT, router);
   };
