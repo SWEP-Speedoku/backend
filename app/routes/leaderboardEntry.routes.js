@@ -1,6 +1,7 @@
 module.exports = app => {
     const leaderboardEntries = require("../controllers/leaderboardEntry.controller.js");
     const authenticator = require("../../services/authentication.middleware.js");
+    const routingConfig = require("../../config/routing.config");
   
     var router = require("express").Router();
   
@@ -25,5 +26,5 @@ module.exports = app => {
     // Delete all Entries (Admin Only)
     router.delete("/all", authenticator.authenticateJWT, leaderboardEntries.deleteAll);
   
-    app.use('/api/leaderboardEntries', router);
+    app.use(`${routingConfig.APP_ENDPOINT}/leaderboardentries`, router);
   };
