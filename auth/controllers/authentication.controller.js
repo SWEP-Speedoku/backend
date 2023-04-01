@@ -28,8 +28,10 @@ exports.login = async (req, res) => {
 
     if (user) {
         // Generate an access token
-        const accessToken = jwt.sign({ id: user.id, username: user.username, role: user.role }, authenticationConfig.ACCESS_TOKEN_SECRET, { expiresIn: authenticationConfig.SESSION_LENGTH });
-        const refreshToken = jwt.sign({ id: user.id, username: user.username, role: user.role }, authenticationConfig.REFRESH_TOKEN_SECRET, { expiresIn: authenticationConfig.REFRESH_LENGTH });
+        const accessToken = jwt.sign({ id: user.id, username: user.username, role: user.role }, 
+            authenticationConfig.ACCESS_TOKEN_SECRET, { expiresIn: authenticationConfig.SESSION_LENGTH });
+        const refreshToken = jwt.sign({ id: user.id, username: user.username, role: user.role }, 
+            authenticationConfig.REFRESH_TOKEN_SECRET, { expiresIn: authenticationConfig.REFRESH_LENGTH });
 
         refreshTokens.push(refreshToken);
 
